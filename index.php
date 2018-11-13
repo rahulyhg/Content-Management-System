@@ -1,18 +1,22 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		
-	</head>
-	<body>
-		<div class="to-do-list-containter">
-			<ul>
-				<li>1. Inlog scherm</li>
-				<li>2. Users om mee in te loggen</li>
-				<li>3. Database connectie</li>
-				<li>4. ..</li>
-				<li>5. ..</li>
-				<li>6. ..</li>
-			</ul>
-		</div>
-	</body>
-</html>
+<?php
+
+require_once('config.php');
+require_once(MODEL_PATH.'/View.php');
+
+$action = isset($_GET['action']) ? $_GET['action'] : null;
+$view = new View;
+
+switch($action){
+	case 'test_page':
+		$view->render(
+			'test_page',
+			array(
+				'test' => 'Hello World Again!!'
+			)
+		);
+		break;
+	case 'home_page':
+	default:
+		$view->render('home_page');
+		break;
+}
